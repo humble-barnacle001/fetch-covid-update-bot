@@ -8,27 +8,28 @@ export default function Index({ page }) {
 export async function getStaticProps() {
     const indexData = readFileSync(`${process.cwd()}/README.md`, "utf8");
 
-    try {
-        console.log("Set webhook URL");
-        await fetch(
-            `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/setWebhook?url=https://${process.env.API_USERNAME}:${process.env.API_PASSWORD}@${process.env.DEPLOY_DOMAIN}/api/getUpdates`
-        );
-        console.log("Webhook set successfully!!");
-    } catch (error) {
-        console.warn("Could not set the webhook please check");
-        console.log(error);
-    }
+    if (process.env.NODE_ENV === "production")
+        try {
+            console.log("Set webhook URL");
+            await fetch(
+                `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/setWebhook?url=https://${process.env.API_USERNAME}:${process.env.API_PASSWORD}@${process.env.DEPLOY_DOMAIN}/api/getUpdates`
+            );
+            console.log("Webhook set successfully!!");
+        } catch (error) {
+            console.warn("Could not set the webhook please check");
+            console.log(error);
+        }
 
     const res = await fetch("https://api.github.com/markdown", {
             method: "POST",
             headers: {
-                Accept: "application/vnd.github.v3+json"
+                Accept: "application/vnd.github.v3+json",
             },
             body: JSON.stringify({
                 text: indexData,
                 mode: "gfm",
-                context: process.env.REPO_ID
-            })
+                context: process.env.REPO_ID,
+            }),
         }),
         res_blob = await res.blob(),
         res_text = await res_blob.text();
@@ -45,7 +46,7 @@ export async function getStaticProps() {
 
     return {
         props: {
-            page
-        }
+            page,
+        },
     };
 }
