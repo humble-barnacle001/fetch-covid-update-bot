@@ -1,4 +1,6 @@
 import { readFileSync } from "fs";
+import { dateTimeFormatter } from "../components/utils/formatter";
+import { DateTime } from "luxon";
 
 export default function Index({ page }) {
     return <div dangerouslySetInnerHTML={page}></div>;
@@ -7,6 +9,7 @@ export default function Index({ page }) {
 // This function gets called at build time
 export async function getStaticProps() {
     const indexData = readFileSync(`${process.cwd()}/README.md`, "utf8");
+    const updateTime = dateTimeFormatter(DateTime.now().toHTTP());
 
     if (process.env.NODE_ENV === "production")
         try {
@@ -26,7 +29,7 @@ export async function getStaticProps() {
                 Accept: "application/vnd.github.v3+json",
             },
             body: JSON.stringify({
-                text: indexData,
+                text: `${indexData}\n\n---\n\nLast Updated: ${updateTime}`,
                 mode: "gfm",
                 context: process.env.REPO_ID,
             }),

@@ -25,6 +25,7 @@ export function nullableStrings(str: string, defaultStr: string = "") {
 
 export function dateTimeFormatter(str: string): string {
     return DateTime.fromHTTP(str)
+        .setZone("Asia/Kolkata")
         .setLocale("en-IN")
         .toLocaleString(DateTime.DATETIME_FULL);
 }
