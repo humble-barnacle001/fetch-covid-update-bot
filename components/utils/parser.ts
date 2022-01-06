@@ -1,4 +1,4 @@
-import sendMessage from "./sendMessage";
+import sendMessage from "../updateService/sendMessage";
 import { dateTimeFormatter, nullableStrings } from "./formatter";
 
 export async function updateParser(update) {
@@ -6,7 +6,7 @@ export async function updateParser(update) {
         const {
             message: { chat, text },
         } = update as { message: { chat: any; text: String } };
-        const [command, query] = text.split(" ");
+        const [command, query] = text.toLowerCase().split(" ");
         const {
             id,
             first_name: fn,
