@@ -16,3 +16,7 @@ export function adminFormatter(
 ) {
     return `From: ${from}\nTo: ${to}\n${formattedData}`;
 }
+
+export function nullableStrings(str: string, defaultStr: string = "") {
+    return str ? str : defaultStr;
+}
