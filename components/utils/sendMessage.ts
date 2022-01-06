@@ -8,9 +8,7 @@ export default async function sendMessage(
     command: string,
     query: string | undefined
 ) {
-    let response;
-    if (command in ["/update", "/fullupdate", "/query", "/statelist"])
-        response = await fetchUpdate();
+    const response = await fetchUpdate();
     switch (command) {
         case "/start":
             return sendUserWiseUpdate(
