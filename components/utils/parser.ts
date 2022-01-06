@@ -1,16 +1,16 @@
 import sendMessage from "./sendMessage";
-import { nullableStrings } from "./formatter";
+import { dateTimeFormatter, nullableStrings } from "./formatter";
 
 export async function updateParser(update) {
     if (update["message"] && update["message"]["text"]) {
         const {
-            message: { chat, text }
+            message: { chat, text },
         } = update as { message: { chat: any; text: String } };
         const [command, query] = text.split(" ");
         const {
             id,
             first_name: fn,
-            last_name: ln
+            last_name: ln,
         } = chat as {
             id: number;
             first_name: string | undefined;
@@ -53,7 +53,7 @@ export function parseData(response, type: string = "", omit_modified = false) {
         new_active,
         new_positive,
         new_cured,
-        new_death
+        new_death,
     } = currentState[0];
 
     const state = type === "" ? "India" : state_name,
@@ -61,7 +61,7 @@ export function parseData(response, type: string = "", omit_modified = false) {
         del_active = Number(new_active) - Number(active),
         del_cured = Number(new_cured) - Number(cured),
         del_dead = Number(new_death) - Number(death),
-        modified = headers["last-modified"];
+        modified = dateTimeFormatter(headers["last-modified"]);
 
     return (
         `Details of ${state}` +
@@ -86,7 +86,9 @@ export function parseFullData(response) {
             .join("\n------\n") +
         `${
             headers["last-modified"]
-                ? `\n\n\nLast Modified: ${headers["last-modified"]}`
+                ? `\n\n\nLast Modified: ${dateTimeFormatter(
+                      headers["last-modified"]
+                  )}`
                 : ""
         }`
     );
