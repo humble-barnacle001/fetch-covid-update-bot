@@ -1,8 +1,12 @@
 import fetchUpdate from "./fetchUpdate";
 import sendUserWiseUpdate from "./sendUserWiseUpdate";
 import { listStates, parseData, parseFullData } from "../utils/parser";
+import { createSubscriber, removeSubscriber } from "../utils/database";
+import fetchCommandList from "./fetchCommandList";
+import { commandListFormatter } from "../utils/formatter";
+import telegramUpdates from ".";
 
-export default async function sendMessage(
+export async function sendMessage(
     id: number,
     name: string,
     command: string,
@@ -21,21 +25,35 @@ export default async function sendMessage(
                 id,
                 `Hello ${name}! Type /help for more help`
             );
-        // case "/help":
-        //     return sendUserWiseUpdate(
-        //         id,
-        //         `Hello ${name}!\nThe list of commands are:`
-        //     );
-        // case "/subscribe":
-        //     return sendUserWiseUpdate(
-        //         id,
-        //         `Hello ${name}! You are successfully subscribed for daily updates at 10:00am IST (+05:30GMT)`
-        //     );
-        // case "/unsubscribe":
-        //     return sendUserWiseUpdate(
-        //         id,
-        //         `Hello ${name}! You are successfully unsubscribed!! We are so sorry to see you go!!\nIf you ever want to subscribe again just send /subscribe to start again!`
-        //     );
+        case "/help":
+            const { data } = await fetchCommandList();
+            return sendUserWiseUpdate(
+                id,
+                `Hello ${name}!\nThe list of commands are:\n\n${commandListFormatter(
+                    data.result
+                )}`
+            );
+        case "/subscribe":
+            const sub_res = await createSubscriber(id);
+            return sendUserWiseUpdate(
+                id,
+                `${
+                    sub_res
+                        ? `Hello ${name}! You are successfully subscribed for daily updates at 10:00am IST (+05:30GMT)`
+                        : "There was some error, please try again later!!"
+                }`
+            );
+        case "/unsubscribe":
+            const unsub_res = await removeSubscriber(id);
+            return sendUserWiseUpdate(
+                id,
+                `${
+                    unsub_res
+                        ? `Hello ${name}! You are successfully unsubscribed!! We are so sorry to see you go!!\n` +
+                          `If you ever want to subscribe again just send /subscribe to start again!`
+                        : "Cannot unsubscribe as you are not subscribed yet!!"
+                }`
+            );
         default:
             return Promise.resolve(0);
     }
@@ -63,4 +81,11 @@ async function sendMessageRequiringData(
         case "/query":
             return sendUserWiseUpdate(id, parseData(response, query));
     }
+}
+
+export async function sendDailyUpdate() {
+    const response = await fetchUpdate();
+    return telegramUpdates(
+        `<b>Subscribed Update:</b>\n\n${parseData(response)}`
+    );
 }

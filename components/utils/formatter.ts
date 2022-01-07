@@ -1,24 +1,5 @@
 import { DateTime } from "luxon";
 
-export function formatter(
-    subject: String,
-    date: any,
-    plain: String,
-    attachmentCount: Number
-) {
-    return `Date: ${date}\n\nSubject: ${subject}
-    ---------------------------------------\n${plain}
-    ---------------------------------------\nAttachment Count: ${attachmentCount}`;
-}
-
-export function adminFormatter(
-    from: String,
-    to: String,
-    formattedData: String
-) {
-    return `From: ${from}\nTo: ${to}\n${formattedData}`;
-}
-
 export function nullableStrings(str: string, defaultStr: string = "") {
     return str ? str : defaultStr;
 }
@@ -28,4 +9,15 @@ export function dateTimeFormatter(str: string): string {
         .setZone("Asia/Kolkata")
         .setLocale("en-IN")
         .toLocaleString(DateTime.DATETIME_FULL);
+}
+
+interface Command {
+    command: string;
+    description: string;
+}
+
+export function commandListFormatter(commands: Command[]) {
+    return commands
+        .map((command) => `/${command.command} - ${command.description}`)
+        .join("\n");
 }

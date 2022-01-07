@@ -1,4 +1,4 @@
-import sendMessage from "../updateService/sendMessage";
+import { sendMessage } from "../updateService/sendMessage";
 import { dateTimeFormatter, nullableStrings } from "./formatter";
 
 export async function updateParser(update) {
