@@ -22,7 +22,7 @@ const telegramUpdates = async (textContent: string, after = []) => {
         [
             x.after
                 ? telegramUpdates(textContent, x.after)
-                : Promise.resolve(true),
+                : Promise.resolve(1),
         ].concat(
             subscriberList.map((chat_id) =>
                 sendUserWiseUpdate(chat_id, textContent, "HTML")

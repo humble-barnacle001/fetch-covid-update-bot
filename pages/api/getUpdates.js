@@ -1,5 +1,6 @@
 import { sendDailyUpdate } from "../../components/updateService/sendMessage";
 import sendUserWiseUpdate from "../../components/updateService/sendUserWiseUpdate";
+import { arrayFlatten } from "../../components/utils/formatter";
 import { updateParser } from "../../components/utils/parser";
 
 export default async function handler(req, res) {
@@ -41,9 +42,13 @@ export default async function handler(req, res) {
             res.end("Unauthorized!");
         } else
             try {
-                await sendDailyUpdate();
-                res.writeHead(200, { "content-type": "text/plain" });
-                res.end("Update sent. Thanks!\r\n");
+                const x = await sendDailyUpdate();
+                return res.json({
+                    success: true,
+                    description: `Successfully sent updates to ${
+                        arrayFlatten(x).length
+                    } subscribers`,
+                });
             } catch (err) {
                 console.dir(err);
                 try {

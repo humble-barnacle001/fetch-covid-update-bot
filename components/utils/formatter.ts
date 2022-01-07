@@ -21,3 +21,16 @@ export function commandListFormatter(commands: Command[]) {
         .map((command) => `/${command.command} - ${command.description}`)
         .join("\n");
 }
+
+// From: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat#reduce_concat_isarray_recursivity
+export function arrayFlatten(arr: any[], d = Infinity): any[] {
+    return d > 0
+        ? arr.reduce(
+              (acc, val) =>
+                  acc.concat(
+                      Array.isArray(val) ? arrayFlatten(val, d - 1) : val
+                  ),
+              []
+          )
+        : arr.slice();
+}
