@@ -46,7 +46,7 @@ export default async function handler(req, res) {
                 return res.json({
                     success: true,
                     description: `Successfully sent updates to ${
-                        arrayFlatten(x).length
+                        arrayFlatten(x).length - 1
                     } subscribers`,
                 });
             } catch (err) {
