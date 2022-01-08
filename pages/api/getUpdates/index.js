@@ -1,7 +1,7 @@
-import { sendDailyUpdate } from "../../components/updateService/sendMessage";
-import sendUserWiseUpdate from "../../components/updateService/sendUserWiseUpdate";
-import { arrayFlatten } from "../../components/utils/formatter";
-import { updateParser } from "../../components/utils/parser";
+import { sendDailyUpdate } from "../../../components/updateService/sendMessage";
+import sendUserWiseUpdate from "../../../components/updateService/sendUserWiseUpdate";
+import { arrayFlatten } from "../../../components/utils/formatter";
+import { updateParser } from "../../../components/utils/parser";
 
 export default async function handler(req, res) {
     if (req.method === "POST") {
