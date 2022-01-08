@@ -55,3 +55,18 @@ export async function removeSubscriber(id: number) {
             return Promise.resolve(false);
     }
 }
+
+export async function countSubscribers() {
+    const client = createDBClient();
+    try {
+        const x = await client.query(
+            q.Count(
+                q.Documents(q.Collection(process.env.TELEGRAM_FAUNA_COLLECTION))
+            )
+        );
+        return Promise.resolve(x);
+    } catch (err) {
+        console.log(err);
+        return Promise.resolve(false);
+    }
+}

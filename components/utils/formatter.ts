@@ -34,3 +34,27 @@ export function arrayFlatten(arr: any[], d = Infinity): any[] {
           )
         : arr.slice();
 }
+
+export function badgeFormatterShieldsIO(
+    label: string,
+    message: string,
+    color: string = "lightgrey",
+    labelColor: string = "grey",
+    isError: boolean = false,
+    namedLogo: string = "telegram",
+    style: string = "flat",
+    // Set badge in production to be cached for two hours
+    cacheSeconds: number = process.env.NODE_ENV === "production" ? 7200 : 300
+) {
+    return {
+        schemaVersion: 1,
+        label,
+        message,
+        color,
+        labelColor,
+        isError,
+        namedLogo,
+        style,
+        cacheSeconds,
+    };
+}
