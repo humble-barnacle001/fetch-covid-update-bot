@@ -30,17 +30,20 @@ export default async function handler(req, res) {
     } else if (req.method === "GET") {
         const { key } = req.query;
         if (key !== process.env.CRON_JOB_KEY) {
-            try {
-                await sendUserWiseUpdate(
-                    process.env.TELEGRAM_ADMIN,
-                    `Illegal CRONJOB trigger attempt to server: ${req.rawHeaders}`
-                );
-            } catch (err) {
-                console.error("More errors: ", err);
-            }
-            res.writeHead(401, { "content-type": "text/plain" });
-            res.end("Unauthorized!");
-        } else
+            if (process.env.NODE_ENV === "production")
+                try {
+                    await sendUserWiseUpdate(
+                        process.env.TELEGRAM_ADMIN,
+                        `Illegal CRONJOB trigger attempt to server: ${req.rawHeaders}`
+                    );
+                } catch (err) {
+                    console.error("More errors: ", err);
+                }
+            return res.status(401).json({
+                success: false,
+                description: `Unauthorized`,
+            });
+        } else if (process.env.NODE_ENV === "production")
             try {
                 const x = await sendDailyUpdate();
                 return res.json({
@@ -48,6 +51,7 @@ export default async function handler(req, res) {
                     description: `Successfully sent updates to ${
                         arrayFlatten(x).length - 1
                     } subscribers`,
+                    time: new Date().getTime(),
                 });
             } catch (err) {
                 console.dir(err);
@@ -59,8 +63,15 @@ export default async function handler(req, res) {
                 } catch (err) {
                     console.error("More errors: ", err);
                 }
-                res.writeHead(500, { "content-type": "text/plain" });
-                res.end("Error occured");
+                return res.json({
+                    success: false,
+                    description: `Failed: ${err.message}`,
+                });
             }
+        else
+            return res.json({
+                success: false,
+                description: `Development server ok!`,
+            });
     }
 }
