@@ -1,7 +1,7 @@
 {
-    "name": "email-receiver",
+    "name": "fetch-covid-update-bot",
     "version": "1.0.0",
-    "description": "",
+    "description": "A telegram bot to send and query COVID-19 cases daily count and send routine updates upon subscription",
     "main": "index.js",
     "scripts": {
         "dev": "next dev",
@@ -11,15 +11,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/humble-barnacle001/email-receiver.git"
+        "url": "git+https://github.com/humble-barnacle001/fetch-covid-update-bot.git"
     },
     "keywords": [],
-    "author": "",
+    "author": "Rwitick Ghosh",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/humble-barnacle001/email-receiver/issues"
+        "url": "https://github.com/humble-barnacle001/fetch-covid-update-bot/issues"
     },
-    "homepage": "https://github.com/humble-barnacle001/email-receiver#readme",
+    "homepage": "https://github.com/humble-barnacle001/fetch-covid-update-bot#readme",
     "dependencies": {
         "axios": "^0.24.0",
         "faunadb": "^4.4.1",
