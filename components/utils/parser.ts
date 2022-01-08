@@ -1,5 +1,5 @@
 import { sendMessage } from "../updateService/sendMessage";
-import { dateTimeFormatter, nullableStrings } from "./formatter";
+import { dateTimeFormatter, dateTimeUnix, nullableStrings } from "./formatter";
 
 export async function updateParser(update) {
     if (update["message"] && update["message"]["text"]) {
@@ -101,4 +101,12 @@ export function listStates(response) {
         .sort((a, b) => Number(a.state_code) - Number(b.state_code))
         .map((state) => `${state.state_code}: ${state.state_name}`)
         .join("\n\n");
+}
+
+export function parseAsEndpoint(response) {
+    const { data, headers } = response as { data: State[]; headers: any };
+    return {
+        data,
+        updated: `${dateTimeUnix(headers["last-modified"])}`
+    }
 }

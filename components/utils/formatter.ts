@@ -11,6 +11,10 @@ export function dateTimeFormatter(str: string): string {
         .toLocaleString(DateTime.DATETIME_FULL);
 }
 
+export function dateTimeUnix(str:string) {
+    return (str?DateTime.fromHTTP(str):DateTime.now()).toMillis();
+}
+
 interface Command {
     command: string;
     description: string;
