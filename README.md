@@ -3,6 +3,9 @@
 [![Telegram](https://img.shields.io/badge/Try%20On-Telegram-2CA5E0?logo=telegram&logoColor=white&style=for-the-badge)](https://t.me/covid19_india_updates_bot)
 
 **Homepage**: https://fetch-covid-update-bot.vercel.app/
+
+**Data API**: https://fetch-covid-update-bot.vercel.app/api/data
+
 **Github Repository**: https://github.com/humble-barnacle001/fetch-covid-update-bot/
 
 ## Status
