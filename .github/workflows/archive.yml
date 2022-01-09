@@ -31,7 +31,7 @@ jobs:
           path: "data.json"
   
   archive-data:
-    name: Archive data to 
+    name: Archive data to GitHub Repo
     needs: [fetch-data]
     runs-on: ubuntu-latest
     steps:
@@ -41,6 +41,7 @@ jobs:
         run: |
           mkdir gh-pages
           cp README.md gh-pages/README.md
+          cp ignore-script.sh gh-pages/ignore-script.sh
       - name: Download a Build Artifact
         uses: actions/download-artifact@v2.1.0
         with:
