@@ -95,7 +95,7 @@ export function parseFullData(response) {
 }
 
 export function listStates(response) {
-    const { data, headers } = response as { data: State[]; headers: any };
+    const { data } = response as { data: State[] };
     return data
         .filter((state) => state.state_code !== "")
         .sort((a, b) => Number(a.state_code) - Number(b.state_code))

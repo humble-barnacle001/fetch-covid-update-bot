@@ -16,7 +16,7 @@ export async function createSubscriber(id: number) {
 
     try {
         // createOrUpdate: ["col", "index", "id", "pureData"]
-        const x = await client.query(
+         await client.query(
             q.Call(q.Function("createOrUpdate"), [
                 process.env.TELEGRAM_FAUNA_COLLECTION,
                 index,
@@ -43,7 +43,7 @@ export async function createSubscriber(id: number) {
 export async function removeSubscriber(id: number) {
     const client = createDBClient();
     try {
-        const x = await client.query(
+        await client.query(
             q.Delete(q.Select("ref", q.Get(q.Match(q.Index(index), id))))
         );
         return Promise.resolve(true);
