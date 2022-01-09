@@ -1,0 +1,59 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Archive data
+
+# Controls when the workflow will run
+on:
+  schedule:
+    - cron: "0 */4 * * *"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  fetch-data:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Fetch API Data
+        uses: JamesIves/fetch-api-data-action@2.0.1
+        with:
+          endpoint: ${{ secrets.DATA_API_URL }}
+          save-location: './'
+          save-name: data
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.3.1
+        with:
+          name: data-artifact
+          path: "data.json"
+  
+  archive-data:
+    name: Archive data to 
+    needs: [fetch-data]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v2.4.0
+      - name: Copy README
+        run: |
+          mkdir gh-pages
+          cp README.md gh-pages/README.md
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.1.0
+        with:
+          name: data-artifact
+          path: gh-pages
+      - id: date-today
+        name: Find date and make a copy of data
+        working-directory: gh-pages
+        run: |
+          FILENAME=data-$(date '+%Y-%m-%d').json
+          cp data.json $FILENAME
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.2.0
+        with:
+          branch: gh-pages
+          folder: gh-pages
