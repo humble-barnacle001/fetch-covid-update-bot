@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Archive data
 
 # Controls when the workflow will run
@@ -51,7 +49,8 @@ jobs:
         name: Find date and make a copy of data
         working-directory: gh-pages
         run: |
-          FILENAME=data-$(date '+%Y-%m-%d').json
+          TIMESTAMP=$(cat 'data.json' | jq -r '.updated')
+          FILENAME=data-$(date -d @$(  echo "( $TIMESTAMP + 19800000 + 500) / 1000" | bc) '+%Y-%m-%d').json
           cp data.json $FILENAME
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.2.0
