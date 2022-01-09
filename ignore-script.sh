@@ -11,4 +11,4 @@ else
   # Proceed with the build
   echo "✅ - Build can proceed"
   exit 1;
-  
+fi
