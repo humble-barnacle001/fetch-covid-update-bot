@@ -53,7 +53,7 @@ jobs:
           FILENAME=data-$(date -d @$(  echo "( $TIMESTAMP + 19800000 + 500) / 1000" | bc) '+%Y-%m-%d').json
           cp data.json $FILENAME
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.2.0
+        uses: JamesIves/github-pages-deploy-action@4.2.1
         with:
           branch: gh-pages
           folder: gh-pages
