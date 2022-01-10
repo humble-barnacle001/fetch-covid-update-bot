@@ -23,7 +23,7 @@ export async function sendMessage(
         case "/start":
             return sendUserWiseUpdate(
                 id,
-                `Hello ${name}! Type /help for more help`
+                `Hello ${name}! Type /subscribe to subscribe to daily updates.\nType /help for more help`
             );
         case "/help":
             const { data } = await fetchCommandList();
