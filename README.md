@@ -12,9 +12,11 @@
 
 **Archival Homepage**: [Homepage](https://humble-barnacle001.github.io/fetch-covid-update-bot/)
 
-**Archival Data**: [Consolidated Data](https://humble-barnacle001.github.io/fetch-covid-update-bot/data.json)
+**Archival Data**:
 
-**Archival Data by Date**: [https://humble-barnacle001.github.io/fetch-covid-update-bot/data-2022-01-09.json](https://humble-barnacle001.github.io/fetch-covid-update-bot/data-2022-01-09.json) (Change date as per YYYY-MM-DD required) 
+- Today's Data: [https://humble-barnacle001.github.io/fetch-covid-update-bot/data.json](https://humble-barnacle001.github.io/fetch-covid-update-bot/data.json)
+
+- Data by date: [https://humble-barnacle001.github.io/fetch-covid-update-bot/data-2022-01-09.json](https://humble-barnacle001.github.io/fetch-covid-update-bot/data-2022-01-09.json) (Change date as per YYYY-MM-DD required) 
 
 **More about the archived data**: [GitHub Branch](https://github.com/humble-barnacle001/fetch-covid-update-bot/tree/gh-pages)
 
