@@ -59,4 +59,5 @@ jobs:
           branch: gh-pages
           folder: gh-pages
           clean: false
+          commit-message: Update data
 
