@@ -6,6 +6,12 @@ on:
     - cron: "0 */4 * * *"
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  push:
+    branches: main
+    paths:
+      - '*.md'
+      - '**.yml'
+
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -38,6 +44,7 @@ jobs:
       - name: Copy README
         run: |
           mkdir gh-pages
+          cp LICENSE gh-pages/LICENSE
           cp README.md gh-pages/README.md
           cp ignore-script.sh gh-pages/ignore-script.sh
       - name: Download a Build Artifact
