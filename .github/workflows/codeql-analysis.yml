@@ -17,7 +17,7 @@ on:
     paths: 
     - '**.js'
     - '**.ts'
-    - '**.yml'
+    - '**/codeql-analysis.yml'
   pull_request:
     branches: [ main ]
   schedule:

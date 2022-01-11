@@ -52,14 +52,17 @@ jobs:
         with:
           name: data-artifact
           path: gh-pages
-      - id: date-today
-        name: Find date, make a copy of data & List files
+      - name: Find date, make a copy of data & List files
         working-directory: gh-pages
         run: |
           TIMESTAMP=$(cat 'data.json' | jq -r '.updated')
           FILENAME=data-$(date -d @$(  echo "( $TIMESTAMP + 19800000 + 500) / 1000" | bc) '+%Y-%m-%d').json
           cp data.json $FILENAME
-          ls -lh
+          mkdir pretty
+          cat data.json | jq . > pretty/data.json
+          cat $FILENAME | jq . > pretty/$FILENAME
+          sudo apt install -y tree
+          tree
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.2
         with:
