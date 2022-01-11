@@ -61,7 +61,7 @@ jobs:
           cp data.json $FILENAME
           ls -lh
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.2.1
+        uses: JamesIves/github-pages-deploy-action@v4.2.2
         with:
           branch: gh-pages
           folder: gh-pages
