@@ -1,6 +1,6 @@
 # fetch-covid-update-bot
 
-![GitHub License](https://img.shields.io/github/license/humble-barnacle001/fetch-covid-update-bot)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/humble-barnacle001/fetch-covid-update-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/humble-barnacle001/fetch-covid-update-bot/context:javascript) ![GitHub License](https://img.shields.io/github/license/humble-barnacle001/fetch-covid-update-bot)
 
 [![Telegram](https://img.shields.io/badge/Try%20On-Telegram-2CA5E0?logo=telegram&logoColor=white&style=for-the-badge)](https://t.me/covid19_india_updates_bot)
 
