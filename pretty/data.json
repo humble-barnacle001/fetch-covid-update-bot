@@ -144,7 +144,7 @@
       "death": "3533",
       "new_active": "12019",
       "new_positive": "193977",
-      "new_cured": "1778421",
+      "new_cured": "178421",
       "new_death": "3537",
       "death_reconsille": "",
       "total": "4",
@@ -556,5 +556,5 @@
       "state_code": ""
     }
   ],
-  "updated": "1641958169000"
+  "updated": "1641964537000"
 }
