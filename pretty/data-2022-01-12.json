@@ -28,7 +28,7 @@
       "new_death": "14505",
       "death_reconsille": "",
       "total": "",
-      "state_code": "35"
+      "state_code": "28"
     },
     {
       "sno": "3",
@@ -556,5 +556,5 @@
       "state_code": ""
     }
   ],
-  "updated": "1641964537000"
+  "updated": "1641981190000"
 }
