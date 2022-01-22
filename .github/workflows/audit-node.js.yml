@@ -26,6 +26,7 @@ jobs:
     - run: npm ci
     - name: Run audit
       uses: oke-py/npm-audit-action@v1.8.3
+      continue-on-error: true
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         issue_labels: javascript,dependencies,possible-vulnerability
