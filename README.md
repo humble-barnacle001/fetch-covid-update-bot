@@ -32,5 +32,5 @@
 
 ## Work left
 
--   Cache data
+-   Add data as a single file (compilation of data)
 -   README update
