@@ -1,4 +1,4 @@
-# fetch-covid-update-bot
+# Fetch India COVID-19 Updates Telegram Bot
 
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/humble-barnacle001/fetch-covid-update-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/humble-barnacle001/fetch-covid-update-bot/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/humble-barnacle001/fetch-covid-update-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/humble-barnacle001/fetch-covid-update-bot/context:javascript) ![GitHub License](https://img.shields.io/github/license/humble-barnacle001/fetch-covid-update-bot)
 
