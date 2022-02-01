@@ -1,6 +1,6 @@
 # Fetch India COVID-19 Updates Telegram Bot
 
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/humble-barnacle001/fetch-covid-update-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/humble-barnacle001/fetch-covid-update-bot/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/humble-barnacle001/fetch-covid-update-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/humble-barnacle001/fetch-covid-update-bot/context:javascript) ![GitHub License](https://img.shields.io/github/license/humble-barnacle001/fetch-covid-update-bot)
+![GitHub License](https://img.shields.io/github/license/humble-barnacle001/fetch-covid-update-bot) [![Total alerts](https://img.shields.io/lgtm/alerts/g/humble-barnacle001/fetch-covid-update-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/humble-barnacle001/fetch-covid-update-bot/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/humble-barnacle001/fetch-covid-update-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/humble-barnacle001/fetch-covid-update-bot/context:javascript)
 
 [![Telegram](https://img.shields.io/badge/Try%20On-Telegram-2CA5E0?logo=telegram&logoColor=white&style=for-the-badge)](https://t.me/covid19_india_updates_bot)
 
@@ -16,7 +16,7 @@
 
 - Today's Data: [https://humble-barnacle001.github.io/fetch-covid-update-bot/data.json](https://humble-barnacle001.github.io/fetch-covid-update-bot/data.json)
 
-- Data by date: [https://humble-barnacle001.github.io/fetch-covid-update-bot/data-2022-01-09.json](https://humble-barnacle001.github.io/fetch-covid-update-bot/data-2022-01-09.json) (Change date as per YYYY-MM-DD required) 
+- Data by date: [https://humble-barnacle001.github.io/fetch-covid-update-bot/data-2022-01-31.json](https://humble-barnacle001.github.io/fetch-covid-update-bot/data-2022-01-31.json) (Change date as per YYYY-MM-DD required) 
 
 **More about the archived data**: [GitHub Branch](https://github.com/humble-barnacle001/fetch-covid-update-bot/tree/gh-pages)
 
