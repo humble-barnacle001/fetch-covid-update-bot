@@ -22,7 +22,7 @@
     "homepage": "https://github.com/humble-barnacle001/fetch-covid-update-bot#readme",
     "dependencies": {
         "axios": "^0.25.0",
-        "faunadb": "^4.4.2",
+        "faunadb": "^4.5.0",
         "luxon": "^2.3.0",
         "next": "^12.0.10",
         "react": "^17.0.2",
