@@ -88,7 +88,7 @@
       "new_death": "1160",
       "death_reconsille": "",
       "total": "2",
-      "state_code": "4"
+      "state_code": "04"
     },
     {
       "sno": "7",
@@ -133,7 +133,7 @@
       "new_death": "26095",
       "death_reconsille": "",
       "total": "4",
-      "state_code": "7"
+      "state_code": "07"
     },
     {
       "sno": "10",
@@ -178,7 +178,7 @@
       "new_death": "10517",
       "death_reconsille": "",
       "total": "5",
-      "state_code": "6"
+      "state_code": "06"
     },
     {
       "sno": "13",
@@ -193,7 +193,7 @@
       "new_death": "4090",
       "death_reconsille": "",
       "total": "1",
-      "state_code": "2"
+      "state_code": "02"
     },
     {
       "sno": "14",
@@ -208,7 +208,7 @@
       "new_death": "4746",
       "death_reconsille": "",
       "total": "1",
-      "state_code": "1"
+      "state_code": "01"
     },
     {
       "sno": "15",
@@ -418,7 +418,7 @@
       "new_death": "17651",
       "death_reconsille": "",
       "total": "9",
-      "state_code": "3"
+      "state_code": "03"
     },
     {
       "sno": "29",
@@ -433,7 +433,7 @@
       "new_death": "9507",
       "death_reconsille": "",
       "total": "6",
-      "state_code": "8"
+      "state_code": "08"
     },
     {
       "sno": "30",
@@ -508,7 +508,7 @@
       "new_death": "7669",
       "death_reconsille": "",
       "total": "2",
-      "state_code": "5"
+      "state_code": "05"
     },
     {
       "sno": "35",
@@ -523,7 +523,7 @@
       "new_death": "23424",
       "death_reconsille": "",
       "total": "5",
-      "state_code": "9"
+      "state_code": "09"
     },
     {
       "sno": "36",
@@ -556,5 +556,5 @@
       "state_code": ""
     }
   ],
-  "updated": "1645238694000"
+  "updated": "1645247105000"
 }
