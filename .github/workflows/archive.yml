@@ -48,7 +48,7 @@ jobs:
           cp README.md gh-pages/README.md
           cp ignore-script.sh gh-pages/ignore-script.sh
       - name: Download a Build Artifact
-        uses: actions/download-artifact@v2.1.0
+        uses: actions/download-artifact@v3
         with:
           name: data-artifact
           path: gh-pages
