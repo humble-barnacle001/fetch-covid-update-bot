@@ -1,6 +1,6 @@
 # Fetch India COVID-19 Updates Telegram Bot
 
-![GitHub License](https://img.shields.io/github/license/humble-barnacle001/fetch-covid-update-bot) [![Total alerts](https://img.shields.io/lgtm/alerts/g/humble-barnacle001/fetch-covid-update-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/humble-barnacle001/fetch-covid-update-bot/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/humble-barnacle001/fetch-covid-update-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/humble-barnacle001/fetch-covid-update-bot/context:javascript)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fhumble-barnacle001%2Ffetch-covid-update-bot&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com) ![GitHub License](https://img.shields.io/github/license/humble-barnacle001/fetch-covid-update-bot) [![Total alerts](https://img.shields.io/lgtm/alerts/g/humble-barnacle001/fetch-covid-update-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/humble-barnacle001/fetch-covid-update-bot/alerts/) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/humble-barnacle001/fetch-covid-update-bot.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/humble-barnacle001/fetch-covid-update-bot/context:javascript)
 
 [![Telegram](https://img.shields.io/badge/Try%20On-Telegram-2CA5E0?logo=telegram&logoColor=white&style=for-the-badge)](https://t.me/covid19_india_updates_bot)
 
