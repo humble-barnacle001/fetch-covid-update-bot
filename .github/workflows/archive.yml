@@ -2,72 +2,70 @@ name: Archive data
 
 # Controls when the workflow will run
 on:
-  schedule:
-    - cron: "0 */4 * * *"
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-  push:
-    branches: main
-    paths:
-      - '**.md'
-      - '**.yml'
-
+    schedule:
+        - cron: "0 */4 * * *"
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
+    push:
+        branches: main
+        paths:
+            - "**.md"
+            - "**.yml"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  fetch-data:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    # This workflow contains a single job called "build"
+    fetch-data:
+        # The type of runner that the job will run on
+        runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - name: Fetch API Data
-        uses: JamesIves/fetch-api-data-action@v2.2.4
-        with:
-          endpoint: ${{ secrets.DATA_API_URL }}
-          save-location: './'
-          save-name: data
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: data-artifact
-          path: "data.json"
-  
-  archive-data:
-    name: Archive data to GitHub Repo
-    needs: [fetch-data]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout main branch
-        uses: actions/checkout@v3
-      - name: Copy README
-        run: |
-          mkdir gh-pages
-          cp LICENSE gh-pages/LICENSE
-          cp README.md gh-pages/README.md
-          cp ignore-script.sh gh-pages/ignore-script.sh
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: data-artifact
-          path: gh-pages
-      - name: Find date, make a copy of data & List files
-        working-directory: gh-pages
-        run: |
-          TIMESTAMP=$(cat 'data.json' | jq -r '.updated')
-          FILENAME=data-$(date -d @$(  echo "( $TIMESTAMP + 19800000 + 500) / 1000" | bc) '+%Y-%m-%d').json
-          cp data.json $FILENAME
-          mkdir pretty
-          cat data.json | jq . > pretty/data.json
-          cat $FILENAME | jq . > pretty/$FILENAME
-          sudo apt install -y tree
-          tree
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.3.4
-        with:
-          branch: gh-pages
-          folder: gh-pages
-          clean: false
-          commit-message: Update data
+        # Steps represent a sequence of tasks that will be executed as part of the job
+        steps:
+            - name: Fetch API Data
+              uses: JamesIves/fetch-api-data-action@v2.2.4
+              with:
+                  endpoint: ${{ secrets.DATA_API_URL }}
+                  save-location: "./"
+                  save-name: data
+            - name: Upload a Build Artifact
+              uses: actions/upload-artifact@v3
+              with:
+                  name: data-artifact
+                  path: "data.json"
 
+    archive-data:
+        name: Archive data to GitHub Repo
+        needs: [fetch-data]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout main branch
+              uses: actions/checkout@v3
+            - name: Copy README
+              run: |
+                  mkdir gh-pages
+                  cp LICENSE gh-pages/LICENSE
+                  cp README.md gh-pages/README.md
+                  cp ignore-script.sh gh-pages/ignore-script.sh
+            - name: Download a Build Artifact
+              uses: actions/download-artifact@v3
+              with:
+                  name: data-artifact
+                  path: gh-pages
+            - name: Find date, make a copy of data & List files
+              working-directory: gh-pages
+              run: |
+                  TIMESTAMP=$(cat 'data.json' | jq -r '.updated')
+                  FILENAME=data-$(date -d @$(  echo "( $TIMESTAMP + 19800000 + 500) / 1000" | bc) '+%Y-%m-%d').json
+                  cp data.json $FILENAME
+                  mkdir pretty
+                  cat data.json | jq . > pretty/data.json
+                  cat $FILENAME | jq . > pretty/$FILENAME
+                  sudo apt install -y tree
+                  tree
+            - name: Deploy 🚀
+              uses: JamesIves/github-pages-deploy-action@v4.4.1
+              with:
+                  branch: gh-pages
+                  folder: gh-pages
+                  clean: false
+                  commit-message: Update data
