@@ -4,28 +4,27 @@ name: Routine Updates Send Job
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  schedule:
-    - cron: 45 3 * * *
+    # Triggers the workflow on push or pull request events but only for the main branch
+    schedule:
+        - cron: 45 3 * * *
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  send:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    # This workflow contains a single job called "build"
+    send:
+        # The type of runner that the job will run on
+        runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - name: Fetch API Data 📦
-        uses: JamesIves/fetch-api-data-action@v2.2.4
-        with:
-          set-output: false
-          endpoint: ${{ secrets.API_URL }}
-          configuration: '{ "method": "GET", "headers": {"Authorization": "Bearer ${{ secrets.API_TOKEN }}"} }'
-      - name: Read response
-        run: cat "fetch-api-data-action/data.json"
-          
+        # Steps represent a sequence of tasks that will be executed as part of the job
+        steps:
+            - name: Fetch API Data 📦
+              uses: JamesIves/fetch-api-data-action@v2.2.4
+              with:
+                  set-output: false
+                  endpoint: ${{ secrets.API_URL }}
+                  configuration: '{ "method": "GET", "headers": {"Authorization": "Bearer ${{ secrets.API_TOKEN }}"} }'
+            - name: Read response
+              run: cat "fetch-api-data-action/data.json"

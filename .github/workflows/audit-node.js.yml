@@ -4,31 +4,29 @@
 name: Audit Node.js dependencies
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch:
-  schedule:
-    - cron: '0 */6 * * *'
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+    workflow_dispatch:
+    schedule:
+        - cron: "0 */6 * * *"
 
 jobs:
-  audit:
+    audit:
+        runs-on: ubuntu-latest
 
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js
-      uses: actions/setup-node@v3
-      with:
-        cache: 'npm'
-    - run: npm ci
-    - name: Run audit
-      uses: oke-py/npm-audit-action@v2.2.0
-      continue-on-error: true
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        issue_labels: javascript,dependencies,possible-vulnerability
-        dedupe_issues: true
-
+        steps:
+            - uses: actions/checkout@v3
+            - name: Use Node.js
+              uses: actions/setup-node@v3
+              with:
+                  cache: "npm"
+            - run: npm ci
+            - name: Run audit
+              uses: oke-py/npm-audit-action@v2.2.0
+              continue-on-error: true
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  issue_labels: javascript,dependencies,possible-vulnerability
+                  dedupe_issues: true
