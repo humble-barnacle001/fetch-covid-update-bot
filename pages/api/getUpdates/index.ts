@@ -2,8 +2,19 @@ import { sendDailyUpdate } from "../../../components/updateService/sendMessage";
 import sendUserWiseUpdate from "../../../components/updateService/sendUserWiseUpdate";
 import { arrayFlatten } from "../../../components/utils/formatter";
 import { updateParser } from "../../../components/utils/parser";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handler(req, res) {
+export default async function handler(
+    req: NextApiRequest,
+    res: NextApiResponse
+) {
+    let tAdmin = 0;
+    try {
+        tAdmin = Number(process.env.TELEGRAM_ADMIN);
+    } catch (error) {
+        res.writeHead(500, { "content-type": "text/plain" });
+        res.end("Error occured");
+    }
     if (req.method === "POST") {
         try {
             const updateBody = req.body;
@@ -18,7 +29,7 @@ export default async function handler(req, res) {
             console.dir(err);
             try {
                 await sendUserWiseUpdate(
-                    process.env.TELEGRAM_ADMIN,
+                    tAdmin,
                     `Error occured in server: ${err.message}`
                 );
             } catch (err) {
@@ -33,7 +44,7 @@ export default async function handler(req, res) {
             if (process.env.NODE_ENV === "production")
                 try {
                     await sendUserWiseUpdate(
-                        process.env.TELEGRAM_ADMIN,
+                        tAdmin,
                         `Illegal CRONJOB trigger attempt to server: ${req.rawHeaders}`
                     );
                 } catch (err) {
@@ -57,7 +68,7 @@ export default async function handler(req, res) {
                 console.dir(err);
                 try {
                     await sendUserWiseUpdate(
-                        process.env.TELEGRAM_ADMIN,
+                        tAdmin,
                         `Error occured in server: ${err.message}`
                     );
                 } catch (err) {
