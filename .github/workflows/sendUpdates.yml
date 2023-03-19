@@ -26,5 +26,13 @@ jobs:
                   set-output: false
                   endpoint: ${{ secrets.API_URL }}
                   configuration: '{ "method": "GET", "headers": {"Authorization": "Bearer ${{ secrets.API_TOKEN }}"} }'
-            - name: Read response
-              run: cat "fetch-api-data-action/data.json"
+            - name: Download jq package
+              run: sudo apt install -y jq
+            - name: Read & publish response
+              run: |
+                cat "fetch-api-data-action/data.json"
+                S=`jq -r '.success' "fetch-api-data-action/data.json"`
+                M=`jq -r '.description' "fetch-api-data-action/data.json"`
+                if $S; then echo '# Success :heavy_check_mark:'; else echo '# Failure :x:'; fi >> $GITHUB_STEP_SUMMARY
+                echo "$M" >> $GITHUB_STEP_SUMMARY
+                
