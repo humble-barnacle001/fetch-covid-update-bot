@@ -51,8 +51,8 @@ jobs:
                 M=`jq -r '.description' "fetch-api-data-action/data.json"`
                 D=`jq -r '.time' "fetch-api-data-action/data.json"`
                 if $S; then echo '# Success :heavy_check_mark:'; else echo '# Failure :x:'; fi >> $GITHUB_STEP_SUMMARY
-                echo "$M on $(date -d @$(($D/1000)) '+%d %B, %Y at %I:%M:%S %p %Z (%:z UTC)')" >> $GITHUB_STEP_SUMMARY
+                echo "$M on $(TZ=Asia/Kolkata date -d @$(($D/1000)) '+%d %B, %Y at %I:%M:%S %p %Z (%:z UTC)')" >> $GITHUB_STEP_SUMMARY
             - name: Warn for a fake response
               if: ${{ (inputs.send || 'Send') != 'Send' }}
-              run: echo ":warning:This is a fake response" >> $GITHUB_STEP_SUMMARY
+              run: echo "Warning :warning::This is a fake response" >> $GITHUB_STEP_SUMMARY
                 
