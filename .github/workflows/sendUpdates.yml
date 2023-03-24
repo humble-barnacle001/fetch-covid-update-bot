@@ -16,8 +16,8 @@ on:
                 required: true
                 type: choice
                 options:
-                    - Send
                     - Do not send
+                    - Send
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
