@@ -35,6 +35,13 @@ jobs:
                   set-output: false
                   endpoint: ${{ secrets.API_URL }}
                   configuration: '{ "method": "GET", "headers": {"Authorization": "Bearer ${{ secrets.API_TOKEN }}"} }'
+            - name: Fetch fake API Data 📦
+              uses: JamesIves/fetch-api-data-action@v2.2.4
+              if: ${{ (inputs.send || 'Send') != 'Send' }}
+              with: 
+                endpoint: $FAKE_UPDATE_API
+                configuration: '{ "method": "GET"}'
+                set-output: false
             - name: Download jq package
               run: sudo apt install -y jq
             - name: Read & publish response
@@ -42,6 +49,10 @@ jobs:
                 cat "fetch-api-data-action/data.json"
                 S=`jq -r '.success' "fetch-api-data-action/data.json"`
                 M=`jq -r '.description' "fetch-api-data-action/data.json"`
+                D=`jq -r '.time' "fetch-api-data-action/data.json"`
                 if $S; then echo '# Success :heavy_check_mark:'; else echo '# Failure :x:'; fi >> $GITHUB_STEP_SUMMARY
-                echo "$M" >> $GITHUB_STEP_SUMMARY
+                echo "$M on $(date -d @$(($D/1000)) '+%d %B, %Y at %I:%M:%S %p %Z (%:z UTC)')" >> $GITHUB_STEP_SUMMARY
+            - name: Warn for a fake response
+              if: ${{ (inputs.send || 'Send') != 'Send' }}
+              run: echo ":warning:This is a fake response" >> $GITHUB_STEP_SUMMARY
                 
