@@ -39,7 +39,7 @@ jobs:
               uses: JamesIves/fetch-api-data-action@v2.2.4
               if: ${{ (inputs.send || 'Send') != 'Send' }}
               with: 
-                endpoint: $FAKE_UPDATE_API
+                endpoint: ${{ vars.FAKE_UPDATE_API }}
                 configuration: '{ "method": "GET"}'
                 set-output: false
             - name: Download jq package
