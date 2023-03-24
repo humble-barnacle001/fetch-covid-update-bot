@@ -10,6 +10,14 @@ on:
 
     # Allows you to run this workflow manually from the Actions tab
     workflow_dispatch:
+        inputs:
+            send:
+                description: 'True to send updates on manual trigger'
+                required: true
+                type: choice
+                options:
+                    - Send
+                    - Do not send
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -22,6 +30,7 @@ jobs:
         steps:
             - name: Fetch API Data 📦
               uses: JamesIves/fetch-api-data-action@v2.2.4
+              if: ${{ (inputs.send || 'Send') == 'Send' }}
               with:
                   set-output: false
                   endpoint: ${{ secrets.API_URL }}
