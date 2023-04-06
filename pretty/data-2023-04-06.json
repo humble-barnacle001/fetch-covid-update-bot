@@ -402,6 +402,7 @@
     },
     {
       "sno": "26",
+      "state_name": "Odisha",
       "active": "412",
       "positive": "1337181",
       "cured": "1327631",
@@ -592,5 +593,5 @@
       "actualdeath24hrs": "6"
     }
   ],
-  "updated": "1680751864000"
+  "updated": "1680759219000"
 }
