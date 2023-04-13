@@ -66,7 +66,8 @@ export function parseData(response, type: string = "", omit_modified = false) {
     return (
         `Details of ${state}` +
         `${!omit_modified && modified ? ` as on ${modified}` : ""}:\n` +
-        `New cases: <b>${del_positive}</b>\n` +
+//         `New cases: <b>${del_positive}</b>\n` +
+        `New cases: ${del_positive}\n` +
         `${omit_modified ? "" : `Growth in active cases: ${del_active}\n`}` +
         `Cured cases: ${del_cured}\n` +
         `Deaths occurred: ${del_dead}\n`
