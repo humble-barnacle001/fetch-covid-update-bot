@@ -179,11 +179,11 @@
     {
       "sno": "12",
       "state_name": "Haryana",
-      "active": "5",
+      "active": "4",
       "positive": "1078931",
       "cured": "1068148",
       "death": 10756,
-      "new_active": "4",
+      "new_active": "3",
       "new_positive": "1078932",
       "new_cured": "1068150",
       "new_death": "10756",
@@ -311,9 +311,9 @@
       "positive": "1056351",
       "cured": "1045565",
       "death": 10786,
-      "new_active": "-1",
+      "new_active": "0",
       "new_positive": "1056551",
-      "new_cured": "1045766",
+      "new_cured": "1045765",
       "new_death": "10786",
       "death_reconsille": "",
       "total": "",
@@ -583,9 +583,9 @@
       "positive": "45000260",
       "cured": "44466524",
       "death": 532034,
-      "new_active": "378",
+      "new_active": "379",
       "new_positive": "45000510",
-      "new_cured": "44466792",
+      "new_cured": "44466791",
       "new_death": "532034",
       "death_reconsille": "",
       "total": "",
@@ -593,5 +593,5 @@
       "actualdeath24hrs": "0"
     }
   ],
-  "updated": "1696477247000"
+  "updated": "1696488190000"
 }
